@@ -5,8 +5,8 @@
                 <div class="large-2 medium-4 cell">
                     logo
                 </div>
-                <div class="large-10 medium-8 cell">
-                    naslov
+                <div class="large-10 medium-8 cell" style="text-align: center;">
+                <h1><?php echo $nameAPP; ?></h1>
                 </div>
             </div>
         </div>

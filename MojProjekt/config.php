@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+include_once "function.php";
+
 $nameAPP="RESTORAN";
 
 switch($_SERVER["HTTP_HOST"]){
