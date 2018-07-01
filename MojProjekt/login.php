@@ -11,7 +11,7 @@
 
 .login-container{
     position: relative;
-    width: 300px;
+    width: 50%;
     margin: 80px auto;
     padding: 20px 40px 40px;
     text-align: center;
@@ -38,7 +38,7 @@
 
 .login-container::before,.login-container::after{
     content: "";
-    position: absolute;
+    position: center;
     width: 100%;height: 100%;
     top: 3.5px;left: 0;
     background: #fff;
@@ -148,10 +148,10 @@
 
     <?php include_once "add/menu.php" ?>
 
-<div class="container">
+<div class="col-md-12">
 	<div class="login-container">
             <div id="output"></div>
-            <div class="avatar"></div>
+            
             <div class="form-box">
                 <form action="autorize.php" method="post">
                     <input type="text" id="username" name="username" placeholder="username">

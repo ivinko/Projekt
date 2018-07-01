@@ -173,16 +173,12 @@ body{
 <br>
 
   <section id="breadcrumb">
-    <div class="container">
-      <ol class="breadcrumb">
-        
-      </ol>
-    </div>
+  
   </section>
 
 
 <section id="main">
-  <div class="container">
+  <div class="col-md-12">
     <div class="row">
       <div class="col-md-3">
         <div class="list-group">
@@ -284,10 +280,6 @@ body{
   </div>
 </section>
 
-
-  <footer id="footer">
-    <p>Copyright : Madhav Prasad<br>2017</p>
-  </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
