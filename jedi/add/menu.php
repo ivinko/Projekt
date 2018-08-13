@@ -23,7 +23,7 @@
         <a href="#"><i class="fas fa-2x fa-archive"></i>Izbornik</a>
         <ul class="menu vertical">
           <li><a href="<?php echo $putanjaAPP.'private\narucitelj\index.php'?>">Naručitelji</a></li>
-          <li><a href="<?php echo $putanjaPP.'private/jelo/index.php'?>">Meni</a></li>
+          <li><a href="<?php echo $putanjaAPP.'private/jelo/index.php'?>">Meni</a></li>
           <li><a href="<?php echo $putanjaAPP.'private/artikl/index.php'?>">Artikli</a></li>
           <li><a href="<?php echo $putanjaAPP.'private/kategorija/index.php'?>">Kategorije</a></li>
         </ul>
