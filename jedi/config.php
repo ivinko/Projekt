@@ -2,7 +2,7 @@
 session_start();
 include_once "postavke.php";
 include_once "funkcije.php";
-$idAPP="EdunovaV12018072234";
+$iddAPP="123456789";
 $nazivAPP="JEDI";
 
 

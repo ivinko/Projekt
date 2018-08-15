@@ -11,7 +11,7 @@
       stavkaIzbornika($putanjaAPP,"index.php","<i class=\"fas fa-home\" style=\"color: #2a6182;\"></i>");
       stavkaIzbornika($putanjaAPP,"onama.php","O nama");
       stavkaIzbornika($putanjaAPP,"contact.php","Kontakt");
-      if(isset($_SESSION[$idAPP . "o"])):
+      if(isset($_SESSION[$iddAPP . "o"])):
         stavkaIzbornika($putanjaAPP,"private/controlPanel.php","Nadzorna ploča");
       
 
@@ -25,14 +25,13 @@
           <li><a href="<?php echo $putanjaAPP.'private\narucitelj\index.php'?>">Naručitelji</a></li>
           <li><a href="<?php echo $putanjaAPP.'private/jelo/index.php'?>">Meni</a></li>
           <li><a href="<?php echo $putanjaAPP.'private/artikl/index.php'?>">Artikli</a></li>
-          <li><a href="<?php echo $putanjaAPP.'private/kategorija/index.php'?>">Kategorije</a></li>
         </ul>
       </li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-    <?php if(isset($_SESSION["o"])): ?>
+    <?php if(isset($_SESSION[$iddAPP . "o"])): ?>
       <li style="width:100%; text-align: center;"><a href="<?php echo $putanjaAPP; ?>logout.php">Odjava</a></li>
     <?php else:?>
       <li style="width:100%; text-align: center;"><a href="<?php echo $putanjaAPP; ?>login.php">Prijava</a></li>

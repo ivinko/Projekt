@@ -2,6 +2,7 @@
 if(!isset($_POST["username"])){
 exit;
 }
+include_once "config.php";
 
     if($_POST["username"]===""){
         header("location: login.php");
@@ -14,7 +15,7 @@ exit;
     ){
         //pusti dalje
     
-        $_SESSION[$idAPP."o"]= $_POST["username"];
+        $_SESSION[$iddAPP."o"]= $_POST["username"];
         header("location: private/controlPanel.php");
     }else{
         header("location: login.php");
