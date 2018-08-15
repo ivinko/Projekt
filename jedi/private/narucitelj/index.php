@@ -8,6 +8,7 @@
   </head>
   <body>
     <div class="grid-container">
+    
       
     <?php include_once "../../add/heading.php" ?>
 
@@ -24,14 +25,15 @@ if(!isset($_SESSION["o"])){
    $izraz->execute(); 
    $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ); 
   ?>
-        <h3>Naručitelji</h3>
 
-    <table>
+        <h3>Naručitelji</h3>
+        
+<table>
   <thead>
     <tr>
-      <th width="200">Ime</th>
-      <th>Prezime</th>
-      <th width="150">OIB</th>
+      <th width="100">Ime</th>
+      <th width="150">Prezime</th>
+      <th width="150">Oib</th>
       <th width="150">Email</th>
       <th width="150">Uredi</th>
     </tr>
@@ -54,8 +56,11 @@ if(!isset($_SESSION["o"])){
     
   </tbody>
 </table>
+
+
 <a href="new.php" class="success button expanded">Dodaj naručitelja</a>
 
+</div>
     <?php include_once "../../add/podnozje.php" ?>
 
     <?php include_once "../../add/script.php" ?>

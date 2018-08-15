@@ -6,7 +6,7 @@ if(!isset($_SESSION["o"])){
 } 
 
 if(isset($_POST["dodaj"])){
-    $izraz = $veza->prepare("insert into narucitelj(ime, prezime, oib, email) values
+    $izraz = $veza->prepare("insert into artikl(ime, prezime, oib, email) values
                             (:ime, :prezime, :oib, :email)");
     unset($_POST["dodaj"]);
     $izraz->execute($_POST); 

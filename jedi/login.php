@@ -78,7 +78,7 @@
     <input type="text" class="sign-in-form-username" id="username" name="username" placeholder="username">
     <label for="password">Lozinka</label>
     <input type="password" class="sign-in-form-password" id="password" name="password" placeholder="password">
-    <button type="submit" class="sign-in-form-button">Prijavi se</button>
+    <button type="submit" name="submit" class="sign-in-form-button">Prijavi se</button>
   </div>
 </form>
 

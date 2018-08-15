@@ -1,5 +1,5 @@
 <?php
-if(!isset($_POST["username"])){
+if(!isset($_POST["submit"])){
 exit;
 }
 include_once "config.php";
