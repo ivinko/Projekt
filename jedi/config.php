@@ -2,7 +2,7 @@
 session_start();
 include_once "postavke.php";
 include_once "funkcije.php";
-$iddAPP="123456789";
+$appID="123456789";
 $nazivAPP="JEDI";
 
 
@@ -12,10 +12,10 @@ switch($_SERVER["HTTP_HOST"]){
     $bojaIzbornika="style=\"background-color: blue;\"";
     break;
     case "ivinko.byethost18.com":
-    $putanjaAPP="/";
+    $putanjaAPP="/jedi/";
     $bojaIzbornika="";
     break;
 }
 
-$veza = new PDO("mysql:host=localhost;dbname=restoran","edunova","edunova");
+$veza = new PDO("mysql:host=sql104.byethost.com;dbname=b18_22313237_restoran","b18_22313237","IcRj.388");
 $veza->exec("set names utf8;");

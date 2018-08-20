@@ -15,7 +15,7 @@ include_once "config.php";
     ){
         //pusti dalje
     
-        $_SESSION[$iddAPP."o"]= $_POST["username"];
+        $_SESSION[$appID."o"]= $_POST["username"];
         header("location: private/controlPanel.php");
     }else{
         header("location: login.php");

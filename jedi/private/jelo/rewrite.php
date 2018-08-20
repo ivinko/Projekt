@@ -1,6 +1,6 @@
 <?php include_once "../../config.php"; 
 
-if(!isset($_SESSION["o"])){
+if(!isset($_SESSION[$appID."o"])){
     header('location:'.$putanjaAPP.'logout.php');
 }
 if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
