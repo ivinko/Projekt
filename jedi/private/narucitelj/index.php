@@ -13,7 +13,20 @@
     <?php include_once "../../add/heading.php" ?>
 
     <?php include_once "../../add/menu.php" ?>
-
+    <?php
+$naruci="";
+if(isset($_GET["naruci"])){
+    $naruci = $_GET["naruci"];
+}
+$izraz =  $veza->prepare(" select sifra, ime , prezime ,oib, email from narucitelj  where concat(ime,' ',prezime) like :naruci");
+$izraz->bindValue("naruci", $naruci . "%");
+$izraz->execute();
+$rezultat = $izraz->fetchAll(PDO::FETCH_OBJ);
+?>
+<form action="<?php echo $_SERVER["PHP_SELF"] ?>">
+    <input type="text" name="naruci" value="<?php echo $naruci ?>">
+    <input type="submit" value="Traži" class="button expanded"/>
+</form>
   
   <?php
 if(!isset($_SESSION[$appID."o"])){
@@ -21,9 +34,6 @@ if(!isset($_SESSION[$appID."o"])){
 } 
 
 
-   $izraz =  $veza->prepare("select * from narucitelj a;");
-   $izraz->execute(); 
-   $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ); 
   ?>
 
         <h3>Naručitelji</h3>

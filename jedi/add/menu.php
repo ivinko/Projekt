@@ -14,20 +14,18 @@
       if(isset($_SESSION[$appID . "o"])):
         stavkaIzbornika($putanjaAPP,"private/controlPanel.php","Nadzorna ploča");
       
-
-        
-      endif;
-      
       ?>
       <li>
         <a href="#"><i class="fas fa-2x fa-archive"></i>Izbornik</a>
         <ul class="menu vertical">
-          <li><a href="<?php echo $putanjaAPP.'private\narucitelj\index.php'?>">Naručitelji</a></li>
-          <li><a href="<?php echo $putanjaAPP.'private/jelo/index.php'?>">Meni</a></li>
+          <li><a href="<?php echo $putanjaAPP.'private/narucitelj/index.php'?>">Naručitelji</a></li>
+          <li><a href="<?php echo $putanjaAPP.'private/jelo/index.php'?>">Jelo</a></li>
           <li><a href="<?php echo $putanjaAPP.'private/artikl/index.php'?>">Artikli</a></li>
+          <li><a href="<?php echo $putanjaAPP.'private/narudzba/index.php'?>">Narudžbe</a></li>
         </ul>
       </li>
     </ul>
+    <?php endif?>
   </div>
   <div class="top-bar-right">
     <ul class="menu">

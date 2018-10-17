@@ -9,12 +9,12 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
 
 
   if(isset($_POST["uredi"])){
-    $izraz = $veza->prepare("update narucitelj set ime=:ime, prezime=:prezime,oib=:oib, email=:email where sifra=:sifra;"); 
+    $izraz = $veza->prepare("update narudzba set narucitelj=:narucitelj, datum=:datum, brojstolica=:brojstolica, napomena=:napomena where sifra=:sifra;"); 
     unset($_POST["uredi"]);
     $izraz->execute($_POST);
     header("location: index.php"); 
 }else{
-    $izraz = $veza->prepare("select * from narucitelj where sifra=:sifra");
+    $izraz = $veza->prepare("select * from narudzba where sifra=:sifra");
     $izraz->execute($_GET);
     $rezultat = $izraz->fetch(PDO::FETCH_OBJ);  
 }
@@ -35,20 +35,20 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     <form class="callout text-center" action="<?php echo $_SERVER["PHP_SELF"] ?>" method="post">
   
   <div class="floated-label-wrapper">
-    <label for="ime">Ime</label>
-    <input value="<?php echo $rezultat->ime ?>" autocomplete="off" type="text" id="ime" name="ime" >
+    <label for="narucitelj">Naručitelj</label>
+    <input value="<?php echo $rezultat->narucitelj ?>" autocomplete="off" type="text" id="narucitelj" name="narucitelj" >
   </div>
   <div class="floated-label-wrapper">
-    <label for="prezime">Prezime</label>
-    <input value="<?php echo $rezultat->prezime ?>" autocomplete="off" type="text" id="prezime" name="prezime" >
+    <label for="datum">Datum</label>
+    <input value="<?php echo $rezultat->datum ?>" autocomplete="off" type="text" id="datum" name="datum" >
   </div>
   <div class="floated-label-wrapper">
-    <label for="oib">OIB</label>
-    <input value="<?php echo $rezultat->oib ?>" autocomplete="off" type="number" min="11" id="oib" name="oib" >
+    <label for="brojstolica">Broj stolica</label>
+    <input value="<?php echo $rezultat->brojstolica ?>" autocomplete="off" type="number" id="brojstolica" name="brojstolica" >
   </div>
   <div class="floated-label-wrapper">
-    <label for="email">Email</label>
-    <input  value="<?php echo $rezultat->email ?>" autocomplete="off" type="text"   id="email" name="email" >
+    <label for="napomena">Napomena</label>
+    <input  value="<?php echo $rezultat->napomena ?>" autocomplete="off" type="text"   id="napomena" name="napomena" >
   </div>
   <br>
             <input type="hidden" name="sifra" value="<?php echo $rezultat->sifra ?>" />

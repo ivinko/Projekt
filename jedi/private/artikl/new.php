@@ -8,6 +8,17 @@ if(!isset($_SESSION[$appID."o"])){
 if(isset($_POST["dodaj"])){
     $izraz = $veza->prepare("insert into artikl(naziv, kategorija, opis, cijena) values
                             (:naziv, :kategorija, :opis, :cijena)");
+
+    
+    $izraz->bindParam(":naziv",$_POST["naziv"]);
+    $izraz->bindParam(":kategorija",$_POST["kategorija"]);
+    $izraz->bindParam(":opis",$_POST["opis"]);
+                                               
+       
+ 
+    $izraz->execute();
+    $zadnji = $veza->lastInsertId();
+    header("location: rewrite.php?sifra=" . $zadnji);
     unset($_POST["dodaj"]);
     $izraz->execute($_POST); 
     header("location: index.php"); 
@@ -29,25 +40,20 @@ if(isset($_POST["dodaj"])){
    <div class="grid-x" style="justify-content:center;">
         <div class="cell medium-4 large-3">
                 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                            <h4 class="text-center">Novi artikl</h4>
-                            <label>Naziv
-                                <input type="text"  name="naziv">
-                            </label>
-                            <label>Kategorija
-                                <input type="text"  name="kategorija" >
-                            </label>
-                            <label>Opis
-                                <input type="text"  name="opis">
-                            </label>
-                            <label>Cijena
-                                <input type="number"  name="cijena">
-                            </label>
+                            
+                <?php include_once "osnovnipodaci.php" ?>
+                            
+                            
+                     
+                    
+                         
                             <br>
                             <input type="submit" name="dodaj" class="button" value="Dodaj"></input>
                             <a href="index.php" class="alert button">Cancel</a>
                 </form>
         </div>
     </div>
+    
 
     <?php include_once "../../add/podnozje.php" ?>
 

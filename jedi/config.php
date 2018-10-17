@@ -17,5 +17,5 @@ switch($_SERVER["HTTP_HOST"]){
     break;
 }
 
-$veza = new PDO("mysql:host=sql104.byethost.com;dbname=b18_22313237_restoran","b18_22313237","IcRj.388");
+$veza = new PDO("mysql:host=localhost;dbname=restoran","edunova","edunova");
 $veza->exec("set names utf8;");
