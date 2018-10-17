@@ -40,7 +40,6 @@
 .sign-in-form-password {
   border-radius: 30px;
   border: none;
-  opacity: .1;
   transition: all ease .4s;
 }
 
@@ -70,7 +69,7 @@
     <?php include_once "add/heading.php" ?>
 
     <?php include_once "add/menu.php" ?>
-
+    </br>
   	<form action="autoriziraj.php" method="post">
   <div class="sign-in-form">
     <h4 class="text-center">Prijava</h4>

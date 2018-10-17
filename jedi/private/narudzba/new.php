@@ -8,9 +8,27 @@ if(!isset($_SESSION[$appID."o"])){
 if(isset($_POST["dodaj"])){
     $izraz = $veza->prepare("insert into narudzba(narucitelj, datum, brojstolica, napomena) values
                             (:narucitelj, :datum, :brojstolica, :napomena)");
-    unset($_POST["dodaj"]);
-    $izraz->execute($_POST); 
-    header("location: index.php"); 
+
+                            $izraz->bindParam(":narucitelj",$_POST["narucitelj"]);
+                            if($_POST["datum"]===""){
+                                $izraz->bindValue(":datum",null,PDO::PARAM_INT);
+                              }else{
+                                $izraz->bindParam(":datum",$_POST["datum"]);
+                              }
+                            $izraz->bindParam(":brojstolica",$_POST["brojstolica"]);
+                            $izraz->bindParam(":napomena",$_POST["napomena"]);
+                                                                       
+                               
+                         
+                            $izraz->execute();
+                            $zadnji = $veza->lastInsertId();
+                            header("location: rewrite.php?sifra=" . $zadnji);
+                            unset($_POST["dodaj"]);
+                            $izraz->execute($_POST); 
+                            header("location: index.php"); 
+
+                            
+                     
 }
 ?>
 <!doctype html>
@@ -29,19 +47,8 @@ if(isset($_POST["dodaj"])){
    <div class="grid-x" style="justify-content:center;">
         <div class="cell medium-4 large-3">
                 <form method="post" action="<?php echo $_SERVER["PHP_SELF"];?>">
-                            <h4 class="text-center">Nova narudžba</h4>
-                            <label>Naručitelj
-                                <input type="text"  name="narucitelj">
-                            </label>
-                            <label>Datum
-                                <input type="text"  name="datum" >
-                            </label>
-                            <label>Broj stolica
-                                <input type="number"  name="brojstolica">
-                            </label>
-                            <label>Napomena
-                                <input type="text"  name="napomena">
-                            </label>
+                <?php include_once "osnovnipodaci.php" ?>
+                            
                             <br>
                             <input type="submit" name="dodaj" class="button" value="Dodaj"></input>
                             <a href="index.php" class="alert button">Cancel</a>

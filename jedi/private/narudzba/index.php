@@ -20,7 +20,10 @@ if(!isset($_SESSION[$appID . "o"])){
 } 
 
 
-   $izraz =  $veza->prepare("select * from narudzba a;");
+   $izraz =  $veza->prepare("select concat(b.ime,' ',b.prezime) as narucitelj, a.datum,
+                                     a.brojstolica, a.napomena from
+                                    narudzba a left join narucitelj b on a.narucitelj=b.sifra
+                                    ;");
    $izraz->execute(); 
    $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ); 
   ?>
@@ -40,7 +43,7 @@ if(!isset($_SESSION[$appID . "o"])){
   <?php foreach($rezultat as $row): ?>
               <tr>
                 <td><?php echo $row->narucitelj; ?></td>
-                <td><?php echo $row->datum; ?></td>
+                <td><?php echo ($row->datum!=null) ? date("d.m.Y.",strtotime($row->datum)) : "Nije definirano "; ?></td>
                 <td><?php echo $row->brojstolica; ?></td>
                 <td><?php echo $row->napomena; ?></td>
                 <td>

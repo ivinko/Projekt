@@ -20,7 +20,10 @@ if(!isset($_SESSION[$appID . "o"])){
 } 
 
 
-   $izraz =  $veza->prepare("select * from artikl a;");
+   $izraz =  $veza->prepare("select a.naziv as naziv, b.naziv as kategorija, a.opis, a.cijena 
+                                from artikl a
+                                inner join kategorija b on a.kategorija=b.sifra
+                            ;");
    $izraz->execute(); 
    $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ); 
   ?>
