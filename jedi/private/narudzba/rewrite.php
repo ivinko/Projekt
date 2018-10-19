@@ -14,6 +14,9 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     $izraz->execute($_POST);
     header("location: index.php"); 
 }else{
+    //  $izraz = $veza->prepare("select concat(b.ime,' ',b.prezime) as narucitelj, a.datum,
+    //                        a.brojstolica, a.napomena, a.sifra from
+    //       narudzba a left join narucitelj b on a.narucitelj=b.sifra;");
     $izraz = $veza->prepare("select * from narudzba where sifra=:sifra");
     $izraz->execute($_GET);
     $rezultat = $izraz->fetch(PDO::FETCH_OBJ);  

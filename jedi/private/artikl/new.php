@@ -7,7 +7,7 @@ if(!isset($_SESSION[$appID."o"])){
 
 if(isset($_POST["dodaj"])){
     $izraz = $veza->prepare("insert into artikl(naziv, kategorija, opis, cijena) values
-                            (:naziv, :kategorija, :opis, :cijena)");
+                            (:naziv, :kategorija, :opis, :cijena);");
 
     
     $izraz->bindParam(":naziv",$_POST["naziv"]);
@@ -44,7 +44,8 @@ if(isset($_POST["dodaj"])){
                 <?php include_once "osnovnipodaci.php" ?>
                             
                             
-                     
+                
+                            	                            
                     
                          
                             <br>

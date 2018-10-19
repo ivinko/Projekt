@@ -14,7 +14,7 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     $izraz->execute($_POST);
     header("location: index.php"); 
 }else{
-    $izraz = $veza->prepare("select * from artikl where sifra=:sifra");
+    $izraz = $veza->prepare("select a.naziv as naziv,k.naziv as kategorija,a.opis as opis,a.cijena as cijena from artikl a,kategorija k where a.kategorija = k.sifra and a.sifra=:sifra ;");
     $izraz->execute($_GET);
     $rezultat = $izraz->fetch(PDO::FETCH_OBJ);  
 }

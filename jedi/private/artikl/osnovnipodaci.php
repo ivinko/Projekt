@@ -23,21 +23,19 @@
            <div class="grid-x">
             <div class="cell large-12">
 
-           
             <label  <?php if(isset($greske["kategorija"])){
               echo ' class="is-invalid-label" ';
-            } ?> for="kategorija">Kategorija</label>
+            } ?> for="kategorija">Smjer</label>
             <select <?php if(isset($greske["kategorija"])){
               echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
             } ?> id="kategorija" name="kategorija">
-              <option value="0">Odaberi kategoriju</option>  
+              <option value="0">Odaberi kategorija</option>  
               <?php 
               
-              $izraz = $veza->prepare("select * from kategorija a order by naziv;");
-
+              $izraz = $veza->prepare("select * from kategorija order by naziv");
               $izraz->execute();
-              $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
-               foreach($rezultati as $row):?>
+              $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ);
+               foreach($rezultat as $row):?>
 
              <option
              <?php 
@@ -59,6 +57,9 @@
            
 
             </div>
+
+           
+           
             
             <div class="cell large-12">
             <?php if(!isset($greske["opis"])): ?>

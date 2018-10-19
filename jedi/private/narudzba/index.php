@@ -20,7 +20,7 @@ if(!isset($_SESSION[$appID . "o"])){
 } 
 
 
-   $izraz =  $veza->prepare("select concat(b.ime,' ',b.prezime) as narucitelj, a.datum,
+   $izraz =  $veza->prepare("select concat(b.ime,' ',b.prezime) as narucitelj, a.datum, a.sifra,
                                      a.brojstolica, a.napomena from
                                     narudzba a left join narucitelj b on a.narucitelj=b.sifra
                                     ;");
