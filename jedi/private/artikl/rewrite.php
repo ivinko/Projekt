@@ -14,7 +14,7 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     $izraz->execute($_POST);
     header("location: index.php"); 
 }else{
-    $izraz = $veza->prepare("select a.naziv as naziv,k.naziv as kategorija,a.opis as opis,a.cijena as cijena from artikl a,kategorija k where a.kategorija = k.sifra and a.sifra=:sifra ;");
+    $izraz = $veza->prepare("select * from artikl where sifra=:sifra;");
     $izraz->execute($_GET);
     $rezultat = $izraz->fetch(PDO::FETCH_OBJ);  
 }
@@ -40,7 +40,26 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
   </div>
   <div class="floated-label-wrapper">
     <label for="kategorija">Kategorija</label>
-    <input value="<?php echo $rezultat->kategorija ?>" autocomplete="off" type="text" id="kategorija" name="kategorija" >
+    <select id="kategorija" name="kategorija">
+              <option value="0">Odaberi kategorija</option>  
+              <?php 
+              
+              $izraz = $veza->prepare("select * from kategorija order by naziv");
+              $izraz->execute();
+              $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
+               foreach($rezultati as $red):?>
+
+             <option
+             <?php 
+             if($rezultat->kategorija==$red->sifra){
+               echo ' selected="selected" ';
+             }
+             ?>
+              value="<?php echo $red->sifra ?>"><?php echo $red->naziv ?></option>  
+            <?php endforeach;?>
+              
+              ?>
+            </select>
   </div>
   <div class="floated-label-wrapper">
     <label for="opis">Opis</label>

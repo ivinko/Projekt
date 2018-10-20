@@ -29,7 +29,7 @@
 }
 
 .sign-in-form input {
-  color: white;
+  color: black;
 }
 
 .sign-in-form input:focus {

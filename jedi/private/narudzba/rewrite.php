@@ -14,9 +14,6 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     $izraz->execute($_POST);
     header("location: index.php"); 
 }else{
-    //  $izraz = $veza->prepare("select concat(b.ime,' ',b.prezime) as narucitelj, a.datum,
-    //                        a.brojstolica, a.napomena, a.sifra from
-    //       narudzba a left join narucitelj b on a.narucitelj=b.sifra;");
     $izraz = $veza->prepare("select * from narudzba where sifra=:sifra");
     $izraz->execute($_GET);
     $rezultat = $izraz->fetch(PDO::FETCH_OBJ);  
@@ -39,7 +36,26 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
   
   <div class="floated-label-wrapper">
     <label for="narucitelj">Naručitelj</label>
-    <input value="<?php echo $rezultat->narucitelj ?>" autocomplete="off" type="text" id="narucitelj" name="narucitelj" >
+    <select id="narucitelj" name="narucitelj">
+    <option value="0">Odaberi narucitelj</option>  
+              <?php 
+              
+              $izraz = $veza->prepare("select * from narucitelj order by ime");
+              $izraz->execute();
+              $rezultati = $izraz->fetchAll(PDO::FETCH_OBJ);
+               foreach($rezultati as $red):?>
+
+             <option
+             <?php 
+             if($rezultat->narucitelj==$red->sifra){
+               echo ' selected="selected" ';
+             }
+             ?>
+              value="<?php echo $red->sifra ?>"><?php echo $red->ime ?></option>  
+            <?php endforeach;?>
+              
+              ?>
+            </select>
   </div>
   <div class="floated-label-wrapper">
     <label for="datum">Datum</label>
