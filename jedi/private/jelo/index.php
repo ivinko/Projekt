@@ -7,7 +7,7 @@
     <?php include_once "../../add/head.php" ?>
   </head>
   <body>
-    <div class="grid-container">
+    <div class="grid-container ">
       
     <?php include_once "../../add/heading.php" ?>
 

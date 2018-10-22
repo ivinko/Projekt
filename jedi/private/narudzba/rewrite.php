@@ -70,10 +70,15 @@ if(!isset($_GET["sifra"]) && !isset($_POST["uredi"])){
     <input  value="<?php echo $rezultat->napomena ?>" autocomplete="off" type="text"   id="napomena" name="napomena" >
   </div>
   <br>
+        <div class="grid-x">
+            <div class="cell large-6">
+            <a href="index.php" class="alert button expanded">Nazad</a>
+            </div>
+            <div class="cell large-6">
             <input type="hidden" name="sifra" value="<?php echo $rezultat->sifra ?>" />
-            <input type="submit" name="uredi" class="button" value="Uredi"></input>
-            <a href="index.php" class="alert button">Cancel</a>
-  
+            <input type="submit" name="uredi" class="button expanded" value="Uredi"></input>
+             </div>
+        </div>
 </form>
 
 

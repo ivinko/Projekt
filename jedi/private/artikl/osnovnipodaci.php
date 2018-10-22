@@ -1,7 +1,7 @@
 <div class="floated-label-wrapper">
             <?php if(!isset($greske["naziv"])): ?>
             <label for="naziv">Naziv</label>
-            <input autocomplete="off" type="text" id="naziv" name="naziv" placeholder="Naziv artikla"
+            <input autocomplete="off" type="text" id="naziv" name="naziv" placeholder=""
             value="<?php echo isset($_POST["naziv"]) ? $_POST["naziv"] : "" ?>">
 
             <?php else:?>
@@ -25,11 +25,11 @@
 
             <label  <?php if(isset($greske["kategorija"])){
               echo ' class="is-invalid-label" ';
-            } ?> for="kategorija">Smjer</label>
+            } ?> for="kategorija">Kategorija</label>
             <select <?php if(isset($greske["kategorija"])){
               echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
             } ?> id="kategorija" name="kategorija">
-              <option value="0">Odaberi kategorija</option>  
+              <option value="0">Odaberi kategoriju</option>  
               <?php 
               
               $izraz = $veza->prepare("select * from kategorija order by naziv");
@@ -64,7 +64,7 @@
             <div class="cell large-12">
             <?php if(!isset($greske["opis"])): ?>
             <label for="opis">Opis</label>
-            <input autocomplete="off" type="text" id="opis" name="opis" placeholder="opis artikla"
+            <input autocomplete="off" type="text" id="opis" name="opis" placeholder=""
             value="<?php echo isset($_POST["opis"]) ? $_POST["opis"] : "" ?>">
 
             <?php else:?>

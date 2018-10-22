@@ -1,24 +1,41 @@
-      <div class="floated-label-wrapper">
-            <?php if(!isset($greske["narucitelj"])): ?>
-            <label for="narucitelj">Naručitelj</label>
-            <input autocomplete="off" type="text" id="narucitelj" name="narucitelj" placeholder="narucitelj"
-            value="<?php echo isset($_POST["narucitelj"]) ? $_POST["narucitelj"] : "" ?>">
+<div class="grid-x">
+            <div class="cell large-12">
 
-            <?php else:?>
+            <label  <?php if(isset($greske["narucitelj"])){
+              echo ' class="is-invalid-label" ';
+            } ?> for="narucitelj">Naručitelj</label>
+            <select <?php if(isset($greske["narucitelj"])){
+              echo ' required="" class="is-invalid-input" data-invalid="" aria-invalid="true" ';
+            } ?> id="narucitelj" name="narucitelj">
+              <option value="0">Odaberi naručitelja</option>  
+              <?php 
+              
+              $izraz = $veza->prepare("select * from narucitelj order by ime");
+              $izraz->execute();
+              $rezultat = $izraz->fetchAll(PDO::FETCH_OBJ);
+               foreach($rezultat as $row):?>
 
-            <label class="is-invalid-label">
-              Zahtjevani unos
-              <input type="text" 
-              value="<?php echo  $_POST["narucitelj"]; ?>"
-              class="is-invalid-input" aria-describedby="nazivGreska" data-invalid="" 
-              aria-invalid="true" autocomplete="off" type="text" id="narucitelj" name="narucitelj" placeholder="narucitelj">
-              <span class="form-error is-visible" id="nazivGreska">
+             <option
+             <?php 
+             if(isset($_POST["narucitelj"]) && $_POST["narucitelj"]==$row->sifra){
+               echo ' selected="selected" ';
+             }
+             ?>
+              value="<?php echo $row->sifra ?>"><?php echo $row->ime  ?></option>  
+            <?php endforeach;?>
+              
+              ?>
+            </select>
+            <?php if(isset($greske["narucitelj"])): ?>
+            <span class="form-error is-visible" id="nazivGreska">
               <?php echo $greske["narucitelj"]; ?>
               </span>
               </label>
+          <?php endif;?>
+           
 
-              <?php endif;?>
-          </div>
+            </div>
+
 
 <div class="grid-x">
           <div class="cell large-12">
@@ -64,8 +81,8 @@
             
             <div class="cell large-12">
             <?php if(!isset($greske["napomena"])): ?>
-            <label for="napomena">napomena</label>
-            <input autocomplete="off" type="text" id="napomena" name="napomena" placeholder="napomena"
+            <label for="napomena">Napomena</label>
+            <input autocomplete="off" type="text" id="napomena" name="napomena" placeholder=""
             value="<?php echo isset($_POST["napomena"]) ? $_POST["napomena"] : "" ?>">
 
             <?php else:?>
@@ -84,7 +101,8 @@
               <?php endif;?>
             </div>
             </div> 
-          </div>   
+          </div>  
+          </div> 
             
             
           

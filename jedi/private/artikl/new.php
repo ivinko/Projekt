@@ -5,24 +5,25 @@ if(!isset($_SESSION[$appID."o"])){
   header('location:'.$putanjaAPP.'logout.php');
 } 
 
-if(isset($_POST["dodaj"])){
-    $izraz = $veza->prepare("insert into artikl(naziv, kategorija, opis, cijena) values
-                            (:naziv, :kategorija, :opis, :cijena);");
 
-    
-    $izraz->bindParam(":naziv",$_POST["naziv"]);
-    $izraz->bindParam(":kategorija",$_POST["kategorija"]);
-    $izraz->bindParam(":opis",$_POST["opis"]);
-                                               
-       
- 
-    $izraz->execute();
-    $zadnji = $veza->lastInsertId();
-    header("location: rewrite.php?sifra=" . $zadnji);
-    unset($_POST["dodaj"]);
-    $izraz->execute($_POST); 
-    header("location: index.php"); 
-}
+    if(isset($_POST["dodaj"])){
+                              $izraz = $veza->prepare("insert into artikl(naziv, kategorija, opis, cijena) values
+                                                      (:naziv, :kategorija, :opis, :cijena);");
+
+                              
+                              $izraz->bindParam(":naziv",$_POST["naziv"]);
+                              $izraz->bindParam(":kategorija",$_POST["kategorija"]);
+                              $izraz->bindParam(":opis",$_POST["opis"]);
+                                                                        
+                                
+                          
+                              $izraz->execute();
+                              $zadnji = $veza->lastInsertId();
+                              header("location: rewrite.php?sifra=" . $zadnji);
+                              unset($_POST["dodaj"]);
+                              $izraz->execute($_POST); 
+                              header("location: index.php"); 
+                          }
 ?>
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
@@ -49,8 +50,15 @@ if(isset($_POST["dodaj"])){
                     
                          
                             <br>
-                            <input type="submit" name="dodaj" class="button" value="Dodaj"></input>
-                            <a href="index.php" class="alert button">Cancel</a>
+                            
+            <div class="grid-x">
+            <div class="cell large-6">
+              <a href="index.php" class="alert button expanded">Nazad</a>
+            </div>
+            <div class="cell large-6">
+              <input class="button expanded" type="submit" name="dodaj" value="Dodaj novi">
+            </div>
+          </div>
                 </form>
         </div>
     </div>

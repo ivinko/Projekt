@@ -43,8 +43,16 @@ if(isset($_POST["dodaj"])){
                                 <input type="text"  name="email">
                             </label>
                             <br>
-                            <input type="submit" name="dodaj" class="button" value="Dodaj"></input>
-                            <a href="index.php" class="alert button">Cancel</a>
+
+                            <div class="grid-x">
+                            <div class="cell large-6">
+                            <a href="index.php" class="alert button expanded">Nazad</a>
+                            </div>
+                            <div class="cell large-6">
+                            <input class="button expanded" type="submit" name="dodaj" value="Dodaj">
+                            </div>
+                        </div>
+                           
                 </form>
         </div>
     </div>
